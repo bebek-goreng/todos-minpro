@@ -1,8 +1,10 @@
 import { prisma } from '../config/db.js';
 
 export class TodoRepositories {
-    static async getAll() {
-        const data = await prisma.todo.findMany();
+    static async getAll(params = {}) {
+        const data = await prisma.todo.findMany({
+            where: params
+        });
 
         return data;
     }
