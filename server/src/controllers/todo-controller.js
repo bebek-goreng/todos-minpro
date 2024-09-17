@@ -3,7 +3,9 @@ import { TodoServices } from "../services/todo-services.js";
 export class TodoControllers {
     static async getAll(req, res, next) {
         try {
-            const data = await TodoServices.getAll();
+            const params = req.body;
+
+            const data = await TodoServices.getAll(params);
 
             res.status(200).json({
                 message: 'ok',

@@ -2,7 +2,7 @@ import { TodoRepositories } from "../repositories/todo-repositories.js";
 
 export class TodoServices {
     static async getAll(params) {
-        const data = await TodoRepositories.getAll();
+        const data = await TodoRepositories.getAll(params);
 
         if (!data) {
             throw { status: 404, message: 'failed to get data' }
