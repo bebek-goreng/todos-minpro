@@ -36,7 +36,7 @@ const createAxiosInstance = (baseURL) => {
 };
 
 const todosInstance = createAxiosInstance("http://localhost:8080/api/v1/todos");
-const userInstance = createAxiosInstance("http://localhost:8080/api/vi/auth");
+const userInstance = createAxiosInstance("http://localhost:8080/api/v1/auth");
 
 
 export {
