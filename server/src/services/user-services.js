@@ -26,7 +26,7 @@ export class UserService {
     }
 
     static async register(params) {
-        const existingUser = await UserRepositories.getUser(params.email);
+        const existingUser = await UserRepositories.login(params);
 
         if (existingUser) {
             throw { status: 400, message: 'email already exist' }
