@@ -11,7 +11,7 @@ const MydDay = () => {
   const fetchTask = async () => {
     try {
       const response = await getAllTodos({
-        category: "MyDay",
+        category: "Important",
         status: "Incomplete",
       });
 
