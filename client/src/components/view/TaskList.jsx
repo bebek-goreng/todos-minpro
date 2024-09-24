@@ -4,7 +4,7 @@ import { useState } from "react";
 import { updateTodos, deleteTodos, createTodos } from "@/modules/fetch-todos";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-export default function TaskList({ tasks = [], fetchTask }) {
+export default function TaskList({ tasks = [], fetchTask, todosCategory }) {
   const [newTask, setNewTask] = useState("");
   const [newDate, setNewDate] = useState("");
   const [newTime, setNewTime] = useState("");
@@ -42,7 +42,6 @@ export default function TaskList({ tasks = [], fetchTask }) {
         status: "complete",
       });
 
-      console.log("<<<<<<< INI COMPLETE TASK", updatedTask);
       fetchTask();
     } catch (error) {
       console.error("Failed to update task:", error);
@@ -61,7 +60,7 @@ export default function TaskList({ tasks = [], fetchTask }) {
   return (
     <div className="flex-1 p-3 flex flex-col">
       <div className="overflow-auto mb-20">
-        <h1 className="text-lg text-center font-bold mb-4">My Day</h1>
+        <h1 className="text-lg text-center font-bold mb-4">{todosCategory}</h1>
 
         {tasks.length === 0 ? (
           <p className="text-center text-gray-500 dark:text-gray-400">
