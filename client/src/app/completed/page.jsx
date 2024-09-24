@@ -34,7 +34,7 @@ const MydDay = () => {
         <TaskList
           tasks={filteringTask}
           fetchTask={fetchTask}
-          todosCategory={"Complete Tasks"}
+          todosCategory={"Completed Tasks"}
         />
       </Layout>
     </div>

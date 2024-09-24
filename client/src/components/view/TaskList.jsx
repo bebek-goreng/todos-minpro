@@ -73,12 +73,14 @@ export default function TaskList({ tasks = [], fetchTask, todosCategory }) {
                 key={task.id}
                 className="bg-gray-200 dark:bg-gray-800 p-4 rounded flex justify-between items-center">
                 <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    className="mr-4"
-                    checked={task.completed}
-                    onChange={() => handleToggleComplete(task)}
-                  />
+                  {task.status !== "complete" && (
+                    <input
+                      type="checkbox"
+                      className="mr-4"
+                      checked={task.completed}
+                      onChange={() => handleToggleComplete(task)}
+                    />
+                  )}
                   <span
                     className={`text-sm ${
                       task.completed ? "line-through" : ""
