@@ -4,7 +4,6 @@ export class TodoControllers {
     static async getAll(req, res, next) {
         try {
             const params = req.body;
-
             const data = await TodoServices.getAll(params);
 
             res.status(200).json({
