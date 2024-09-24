@@ -24,14 +24,18 @@ const MydDay = () => {
     fetchTask();
   }, []);
 
-  const taskMyDay = task.filter((t) => {
+  const filteringTask = task.filter((t) => {
     return t.status === "complete";
   });
 
   return (
     <div>
       <Layout>
-        <TaskList tasks={taskMyDay} fetchTask={fetchTask} />
+        <TaskList
+          tasks={filteringTask}
+          fetchTask={fetchTask}
+          todosCategory={"Complete Tasks"}
+        />
       </Layout>
     </div>
   );
