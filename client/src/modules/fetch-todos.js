@@ -30,9 +30,9 @@ const createTodos = async (data) => {
     }
 }
 
-const updateTodos = async (id) => {
+const updateTodos = async (id, data) => {
     try {
-        const response = await todosInstance.put(`/update/${id}`);
+        const response = await todosInstance.put(`/update/${id}`, data);
         return response.data;
     } catch (error) {
         console.error("Error fetching user data:", error.response ? error.response.data : error.message);
@@ -40,7 +40,7 @@ const updateTodos = async (id) => {
     }
 }
 
-const deleleteTodos = async (id) => {
+const deleteTodos = async (id) => {
     try {
         const response = await todosInstance.delete(`/delete/${id}`);
         return response.data;
@@ -55,5 +55,5 @@ export {
     getDetailsTodos,
     createTodos,
     updateTodos,
-    deleleteTodos
+    deleteTodos
 }

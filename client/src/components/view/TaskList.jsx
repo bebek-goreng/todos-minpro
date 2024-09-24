@@ -4,7 +4,7 @@ import { useState } from "react";
 import { updateTodos, deleteTodos, createTodos } from "@/modules/fetch-todos";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-export default function TaskList({ tasks = [] }) {
+export default function TaskList({ tasks = [], fetchTask }) {
   const [newTask, setNewTask] = useState("");
   const [newDate, setNewDate] = useState("");
   const [newTime, setNewTime] = useState("");
@@ -26,6 +26,7 @@ export default function TaskList({ tasks = [] }) {
         setNewTask("");
         setNewDate("");
         setNewTime("");
+        fetchTask();
       } catch (error) {
         console.error("Failed to add task:", error);
         alert("Failed to add task. Please try again.");
@@ -38,8 +39,11 @@ export default function TaskList({ tasks = [] }) {
   const handleToggleComplete = async (task) => {
     try {
       const updatedTask = await updateTodos(task.id, {
-        completed: !task.completed,
+        status: "complete",
       });
+
+      console.log("<<<<<<< INI COMPLETE TASK", updatedTask);
+      fetchTask();
     } catch (error) {
       console.error("Failed to update task:", error);
     }
@@ -48,6 +52,7 @@ export default function TaskList({ tasks = [] }) {
   const handleDeleteTask = async (taskId) => {
     try {
       await deleteTodos(taskId);
+      fetchTask();
     } catch (error) {
       console.error("Failed to delete task:", error);
     }
